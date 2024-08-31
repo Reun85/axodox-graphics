@@ -38,7 +38,9 @@ namespace Axodox::Graphics::D3D12
     };
 
     zero_memory(result.RTVFormats);
-    memcpy(result.RTVFormats, RenderTargetFormats.begin(), min(RenderTargetFormats.size(), size(result.RTVFormats)));
+  memcpy(result.RTVFormats, RenderTargetFormats.begin(),
+         min(RenderTargetFormats.size(),
+             sizeof(DXGI_FORMAT) * size(result.RTVFormats)));
 
     return result;
   }
